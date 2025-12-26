@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simple Todo App - Create, read, update, and delete todos">
+  <title>Todo App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <h1>My Todos</h1>
+
+    <!-- Add Todo Form -->
+    <form id="addForm" class="add-form">
+      <input
+        type="text"
+        id="todoInput"
+        class="form-control"
+        placeholder="Add a new todo..."
+        aria-label="Todo text"
+        required
+      />
+      <button type="submit" class="btn-primary">Add</button>
+    </form>
+
+    <!-- Filter Options -->
+    <div class="filters" role="group" aria-label="Filter todos">
+      <button class="filter-btn active" data-status="all" aria-pressed="true">
+        All
+      </button>
+      <button class="filter-btn" data-status="pending" aria-pressed="false">
+        Pending
+      </button>
+      <button class="filter-btn" data-status="completed" aria-pressed="false">
+        Completed
+      </button>
+    </div>
+
+    <!-- Todo List -->
+    <div id="todoList" class="todo-list" role="list" aria-label="Todo items">
+      <!-- Todos will be inserted here by JavaScript -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="empty-state" style="display: none">
+      <div class="empty-state-icon">📝</div>
+      <p class="empty-state-text">No todos yet. Create one to get started!</p>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <span id="pendingCount">0</span> pending |
+      <span id="completedCount">0</span> completed
+    </div>
+  </div>
+
+  <!-- Error Toast -->
+  <div id="errorToast" class="error-toast" role="alert" aria-live="polite">
+    <!-- Error message will be inserted here -->
+  </div>
+
+  <!-- Edit Modal (for future use) -->
+  <div id="editModal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">Edit Todo</div>
+      <div class="modal-body">
+        <form id="editForm" class="edit-form">
+          <input
+            type="text"
+            id="editInput"
+            class="form-control"
+            placeholder="Todo text"
+            required
+          />
+          <button type="submit" class="btn-success btn-sm">Save</button>
+          <button type="button" class="btn-secondary btn-sm" id="editCancel">
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">Delete Todo?</div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this todo? This action cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" id="deleteCancel">Cancel</button>
+        <button type="button" class="btn-danger" id="deleteConfirm">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="api-client.js"></script>
+  <script src="storage.js"></script>
+  <script src="ui.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
