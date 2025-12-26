@@ -1,55 +1,40 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Todo App Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Simplicity First
+Every feature must solve a single, well-defined problem. Avoid premature abstraction and scope creep. If a component can be deleted without breaking core functionality, it should be deleted. Complexity requires explicit justification.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. CRUD-Centric Design
+All data operations align to Create, Read, Update, Delete. The API and UI expose these operations clearly. Avoid implicit side effects; every action must have explicit intent and visibility to the user.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Test-First Development
+All business logic must have passing tests before implementation is considered complete. Tests validate the happy path, error conditions, and edge cases. Manual testing is always required before a feature is deemed "done."
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Accessible User Interface
+The frontend uses standard HTML/CSS/JavaScript patterns. Avoid complex frameworks for simple tasks. The UI must be responsive, keyboard-navigable, and work on modern browsers. Accessibility (WCAG 2.1 AA) is non-negotiable.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Transparent Error Handling
+Errors must be visible to the user with clear, actionable messages. No silent failures. Logging must capture enough context for debugging but not expose sensitive data. Client and server errors must be distinguishable.
 
-### [PRINCIPLE_6_NAME]
+## Technical Requirements
 
+- **Backend**: REST API exposing standard CRUD endpoints for todos (/todos, /todos/{id})
+- **Frontend**: Single-page application or server-rendered pages with minimal client-side state
+- **Data Storage**: Persistent storage (database, file, or in-memory with serialization) with schema validation
+- **No External Authentication**: Simple bearer token or session-based auth is acceptable; OAuth/SSO deferred
+- **Dependencies**: Minimize third-party libraries; use standard language/framework features where possible
 
-[PRINCIPLE__DESCRIPTION]
+## Development Workflow
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+1. **Feature Branch**: Create branches with descriptive names (e.g., `feat/add-todo`, `fix/delete-button`)
+2. **Test Before Code**: Write test cases and get approval before implementation
+3. **Code Review**: All code must be reviewed for correctness, simplicity, and adherence to principles
+4. **Integration Testing**: Test complete user journeys (e.g., create → read → update → delete)
+5. **Manual QA**: Verify all changes in the UI before merging to main
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+Constitution supersedes all other practices. All PRs must explicitly verify compliance with the five core principles. Amendments require documentation of rationale, impact analysis, and user consent. Code should be reviewed for simplicity and adherence to principles first, correctness second.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-27 | **Last Amended**: 2025-12-27
